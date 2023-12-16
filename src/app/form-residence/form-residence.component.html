@@ -1,0 +1,36 @@
+<form [formGroup]="myForm">
+    <table>
+        <div formGroupName="sousgroupe">
+        <tr>
+            <td>Id</td>
+            <td><input formControlName="id">
+            <div *ngIf="id.errors  && id.touched">
+               <div *ngIf="id.errors['pattern']"> <app-errors [errorMessage]="'pattern'" ></app-errors> </div> 
+               <div *ngIf="id.errors['required']"> <app-errors [errorMessage]="'required'" ></app-errors> </div>      
+            </div>
+        </td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><input formControlName="name" >
+                <div *ngIf="name.errors  && name.touched" >
+                <div *ngIf="name.errors['required']"> <app-errors [errorMessage]="'required'" ></app-errors> </div>      
+            </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><input formControlName="adresse">
+            <div *ngIf="address.errors && address.touched">
+                <div *ngIf="address.errors['required']"> <app-errors [errorMessage]="'required'" ></app-errors> </div>
+            </div>
+            </td>
+        </tr>
+    </div>
+    <div>
+        <tr>
+            <td></td>
+            <td><button type="submit" [disabled]="myForm.invalid">Save</button></td>
+        </tr>
+    </div>
+    </table>
